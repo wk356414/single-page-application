@@ -2,7 +2,6 @@
 session_start();
 include_once 'config.php';
 
-// If the user is already logged in, redirect to the main page.
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
@@ -10,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
 
 $message = ""; // for error messages
 
-// Process the form submission on POST
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve and sanitize inputs
     $username = trim($_POST['username']);
@@ -60,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* Simple inline styling for the login form */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;

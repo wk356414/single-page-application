@@ -1,5 +1,4 @@
 <?php
-// employees/edit.php
 include_once '../config.php';
 
 if (!isset($_GET['id'])) {

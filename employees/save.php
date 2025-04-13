@@ -1,14 +1,8 @@
 <?php
 include_once '../config.php';
 
-// Enable MySQLi exceptions
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-/**
- * Handle duplicate entry errors and display friendly messages.
- *
- * @param mysqli_sql_exception $e
- */
 function checkDuplicateError($e) {
     if ($e->getCode() === 1062) {
         $msg = $e->getMessage();
@@ -24,12 +18,10 @@ function checkDuplicateError($e) {
 }
 
 try {
-    // Validate required fields
     if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['mobile']) || empty($_POST['city_id'])) {
         die("All fields are required. Please complete the form.");
     }
     
-    // Retrieve and sanitize form data
     $id       = isset($_POST['id']) ? intval($_POST['id']) : 0;
     $name     = trim($_POST['name']);
     $email    = trim($_POST['email']);
@@ -54,7 +46,6 @@ try {
     }
 } catch (mysqli_sql_exception $e) {
     checkDuplicateError($e);
-    // If error is not a duplicate error, show a generic friendly error.
     echo "Error: " . $e->getMessage();
     exit;
 }

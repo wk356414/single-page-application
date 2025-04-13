@@ -1,15 +1,15 @@
 <?php
-// employees/new.php
+
 include_once '../config.php';
 
-// Fetch list of cities for the dropdown
+
 $citiesQuery = "SELECT id, name FROM cities";
 $citiesResult = $conn->query($citiesQuery);
 $cities = $citiesResult->fetch_all(MYSQLI_ASSOC);
 ?>
 <h2>Add New Employee</h2>
 <form id="employeeForm">
-    <!-- Hidden field remains empty for new records -->
+
     <input type="hidden" name="id" value="">
     
     <label>Name:</label><br>
